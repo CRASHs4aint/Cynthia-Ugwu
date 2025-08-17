@@ -9,6 +9,22 @@ body {
   width: 100%;
   height: 100%;
 }
+#minicircle{
+  transition: all cubic-bezier(0.19, 1, 0.22, 1)1s;
+  width:10px ;
+  height: 10px;
+  position: absolute;
+  z-index: 99999;
+  border-radius: 50%;
+  background-color: #fff;
+}
+.bounding{
+  width: fit-content;
+  overflow: hidden;
+}
+.bounding .boundingelem{
+  transform: translateY(100%);
+}
 #main {
   width: 100%;
   background-color: black;
@@ -48,6 +64,9 @@ body {
   margin-left: 230px;
 }
 .blocktext {
+  display: flex;
+  flex-direction: column;
+  align-items:end ;
   width: fit-content;
 }
 .blocktext h5 {
@@ -56,6 +75,9 @@ body {
   font-size: 15px;
 }
 #smallheading {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
   margin-top: 150px;
   padding-right: 50px;
 }
