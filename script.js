@@ -28,6 +28,13 @@ function firstPageAnim() {
       ease: Expo.easeInOut,
     });
 }
+//jab ham mouse move kare toh skew kar paye aur maximum aur minimum skew define kar paye,jab mouse move ho toh chpta ki value badhe,aur jab mouse chalna band ho jaye toh chapta hata lo
+
+function circleChaptaKaro(){
+     window.addEventListener("mousemove",function(dets){
+
+     });
+}
 
 function circleMouseFollower() {
   window.addEventListener("mousemove", function (dets) {
