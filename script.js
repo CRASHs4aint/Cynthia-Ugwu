@@ -58,8 +58,6 @@ function circleChaptaKaro() {
   });
 }
 
-
-
 function circleMouseFollower(xscale, yscale) {
   window.addEventListener("mousemove", function (dets) {
     document.querySelector(
@@ -73,36 +71,30 @@ firstPageAnim();
 
 //teno element ko select karo,uske baad teeno par ek mousemove lagao,jab mousemove ho toh ye pata karo ki mouse kaha par hai,jiska matlab hai mouse ki x and y postion pata karo,ab mouse ki x,y postion ke badle us image ko show karo and us image ko move karo,move karte waqt rotate karo and jaise jaise mouse tez chale waise waise rotation bhi tex ho jaye
 
-
-
-
-// document.querySelectorAll(".elem").forEach(function (elem) {
-//   elem.addEventListener("mousemove", function (details) {
-//     gsap.to(elem.querySelector("img"), {
-//       opacity: 1,
-//       ease: Power1,
-//     });
-//   });
-// });
-
 document.querySelectorAll(".elem").forEach(function (elem) {
-  elem.addEventListener("mousemove", function (event) {
+  var rotate = 0;
+  var diffrot = 0;
+
+  elem.addEventListener("mouseleave", function (details) {
     gsap.to(elem.querySelector("img"), {
-      opacity: 1,
-      x: event.offsetX,  // image follows cursor horizontally
-      y: event.offsetY,  // image follows cursor vertically
-      duration: 0.3,
-      ease: "power1.out", // lowercase string is the correct GSAP syntax
+      opacity: 0,
+      ease: Power3,
+      duration:0.5,
     });
   });
 
-  // hide the image when mouse leaves
-  elem.addEventListener("mouseleave", function () {
+  elem.addEventListener("mousemove", function (details) {
+    var diff = details.clientY - elem.getBoundingClientRect().top;
+
+    diffrot = details.clientX - rotate;
+    rotate = details.clientX;
+
     gsap.to(elem.querySelector("img"), {
-      opacity: 0,
-      duration: 0.3,
-      ease: "power1.out",
+      opacity: 1,
+      ease: Power3,
+      top: diff,
+      left: details.clientX,
+      rotate: gsap.utils.clamp(-20, 20, diffrot * 0.5),
     });
   });
 });
-
